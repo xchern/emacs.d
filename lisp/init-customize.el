@@ -31,25 +31,7 @@
 					   (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'toggle-fullscreen)
 
-(require 'package)
-(package-initialize)
-;; package server list
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-
-;; smex can auto complete the M-x command
-;; smex key-bonding
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-;; color-theme can adjust the color of the ui
-(color-theme-initialize)
-(color-theme-calm-forest)
-
 ;; guile as default scheme interpreter
 (setq scheme-program-name "guile")
 
-(provide 'init-main)
+(provide 'init-customize)
