@@ -18,6 +18,10 @@
 (display-time-mode t)
 (tool-bar-mode -1);; do not show tool bar
 (setq use-dialog-box nil);; do not use dialogs
+
+(set-language-environment 'UTF-8)
+(set-locale-environment "UTF-8")
+
 (setq initial-scratch-message ";; Happy emacsing!
 ")
 
