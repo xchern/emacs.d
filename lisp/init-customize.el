@@ -19,6 +19,8 @@
 (tool-bar-mode -1);; do not show tool bar
 (setq use-dialog-box nil);; do not use dialogs
 
+(setq make-backup-files nil);; do not backup files
+
 (set-language-environment 'UTF-8)
 (set-locale-environment "UTF-8")
 
