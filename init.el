@@ -17,5 +17,6 @@
 (require 'init-org)
 (require 'init-theme)
 (require 'init-markdown)
+(require 'init-auctex)
 
 (provide 'init)
