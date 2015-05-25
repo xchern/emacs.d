@@ -18,5 +18,6 @@
 (require 'init-theme)
 (require 'init-markdown)
 (require 'init-auctex)
+(require 'init-yasnippet)
 
 (provide 'init)
