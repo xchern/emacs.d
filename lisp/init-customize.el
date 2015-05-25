@@ -1,5 +1,6 @@
 (setq inhibit-startup-message t) ; close init screen
 
+(scroll-bar-mode -1)
 (setq column-number-mode t) ; show column number
 (global-linum-mode);; line number before each line
 
