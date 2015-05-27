@@ -21,16 +21,30 @@
 
 (require 'cl);;find-if in the package
 
-;; Set regular font
-(set-face-attribute 'default nil
-					:family (find-if 'font-existsp en-font-list)
-					:height 110)
 
-;; Set font for han characters
-(let ((zh-font (find-if 'font-existsp zh-font-list)))
+(defun init-set-font ()
+  ;; find avaliable font
+  (defvar default-en-font (find-if 'font-existsp en-font-list))
+  (defvar default-zh-font (find-if 'font-existsp zh-font-list))
+  ;; Set regular font
+  (set-face-attribute 'default nil
+					  :family default-en-font
+					  :height 110)
+  ;; Set font for han characters
   (set-fontset-font t 'han
-					zh-font
+					default-zh-font
 					nil)
-  (setq face-font-rescale-alist (list (cons zh-font zh-font-size-ratio))))
+  ;; Set han font rescale ratio
+  (setq face-font-rescale-alist 
+		(list (cons default-zh-font zh-font-size-ratio))))
+
+(if (and (fboundp 'daemonp) (daemonp))
+	(add-hook 'after-make-frame-functions
+			  (lambda (frame)
+				(with-selected-frame frame
+				  (init-set-font))))
+  (init-set-font))
+;;(init-set-font)
 
 (provide 'init-font)
+
