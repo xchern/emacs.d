@@ -6,7 +6,9 @@
 
 (package-initialize)
 
-(require 'init-customize)
+(load (expand-file-name "customize.el" user-emacs-directory))
+
+(require 'init-utils)
 
 (require 'init-font)
 

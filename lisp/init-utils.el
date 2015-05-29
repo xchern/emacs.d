@@ -29,8 +29,6 @@
 ")
 
 (setq frame-title-format "emacs@%b");; title format
-(setq user-full-name "Xiaosong Chen");; personal infomation
-(setq user-mail-address "xiaosong0911@gmail.com")
 
 (defun toggle-fullscreen ()
   (interactive)
@@ -38,7 +36,4 @@
 					   (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'toggle-fullscreen)
 
-;; guile as default scheme interpreter
-(setq scheme-program-name "guile")
-
-(provide 'init-customize)
+(provide 'init-utils)
