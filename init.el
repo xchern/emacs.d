@@ -6,7 +6,11 @@
 
 (package-initialize)
 
-(load (expand-file-name "customize.el" user-emacs-directory))
+(let ((customize-file-path
+	   (expand-file-name "customize.el" user-emacs-directory)))
+  (if (file-exists-p customize-file-path)
+      (load customize-file-path)
+    (message "You have no customize.el file in 'emacs.d' diretory")))
 
 (require 'init-utils)
 

@@ -5,4 +5,5 @@ server/
 url/
 .org-id-locations
 smex-items
-~
+*~
+customize.el
