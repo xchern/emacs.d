@@ -24,6 +24,7 @@
 
 (set-language-environment 'UTF-8)
 (set-locale-environment "UTF-8")
+(setq buffer-file-coding-system 'utf-8-unix)
 
 (setq initial-scratch-message ";; Happy emacsing!
 ")
