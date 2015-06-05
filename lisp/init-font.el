@@ -1,15 +1,17 @@
 (defvar en-font-list;; 英文字体列表
-  '("Consolas"
+  '("Courier New"
+	"Liberation Mono"
+	"Consolas"
 	"Monaco"
-	"Liberation Mono"))
+	))
 
 (defvar zh-font-list;; 中文字体列表
-  '("文泉驿等宽微米黑"
-  	"WenQuanYi Micro Hei Mono"
-    "微软雅黑"
-    "Microsoft YaHei"
-    "宋体"
-    "SimSun"))
+  '("华文仿宋" "STFangsong"
+	"黑体" "SimHei"
+	"微软雅黑" "Microsoft YaHei"
+	"文泉驿等宽微米黑" "WenQuanYi Micro Hei Mono"
+    "宋体" "SimSun"
+	))
 
 ;; 优先使用字体列表中靠前的字体
 
@@ -29,13 +31,13 @@
   ;; Set regular font
   (set-face-attribute 'default nil
 					  :family default-en-font
-					  :height 110)
+					  :height 100)
   ;; Set font for han characters
   (set-fontset-font t 'han
 					default-zh-font
 					nil)
   ;; Set han font rescale ratio
-  (setq face-font-rescale-alist 
+  (setq face-font-rescale-alist
 		(list (cons default-zh-font zh-font-size-ratio))))
 
 (if (and (fboundp 'daemonp) (daemonp))
