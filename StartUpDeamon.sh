@@ -1,5 +1,5 @@
 #! /bin/sh
-LC_CTYPE=zh_CN.utf8 emacs24-lucid --daemon
+LC_CTYPE=zh_CN.utf8 emacs --daemon
 
 # to launch new emacs frame for window system
 #    emacsclient -c -a ""
