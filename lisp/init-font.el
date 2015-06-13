@@ -1,7 +1,8 @@
 (defvar en-font-list;; 英文字体列表(名称 . 宽高比)
-  '(("Courier New" . 0.6029)
-	;("Liberation Mono" . 1)
+  '(("Courier New" . 0.6015)
+	("Liberation Mono" . 0.6015)
 	("Consolas" . 0.5493)
+	("DejaVu Sans Mono" . 0.6015)
 	;("Monaco" . 1)
 	))
 
@@ -29,20 +30,23 @@
   ;; find avaliable font
   (defvar default-en-font (find-if 'font-existsp en-font-list))
   (defvar default-zh-font (find-if 'font-existsp zh-font-list))
-  ;; Set regular font
-  (set-face-attribute 'default nil
-					  :family (car default-en-font)
-					  :height 100)
-  ;; Set font for han characters
-  (set-fontset-font t 'han
-					(car default-zh-font)
-					nil)
-  ;; Set han font rescale ratio
-  (setq face-font-rescale-alist
-		(list (cons (car default-zh-font)
-					(* 2.05
-					   (/ (cdr default-en-font)
-						  (cdr default-zh-font)))))))
+  (if (not (or (null default-en-font) (null default-zh-font)))
+	  (progn
+		;; Set regular font
+		(set-face-attribute 'default nil
+							:family (car default-en-font)
+							:height 100)
+		;; Set font for han characters
+		(set-fontset-font t 'han
+						  (car default-zh-font)
+						  nil)
+		;; Set han font rescale ratio
+		(setq face-font-rescale-alist
+			  (list (cons (car default-zh-font)
+						  (* 2.05
+							 (/ (cdr default-en-font)
+								(cdr default-zh-font)))))))
+	(message "No font suits")))
 
 (if (and (fboundp 'daemonp) (daemonp))
 	(add-hook 'after-make-frame-functions
@@ -50,7 +54,6 @@
 				(with-selected-frame frame
 				  (init-set-font))))
   (init-set-font))
-;;(init-set-font)
 
 (provide 'init-font)
 
