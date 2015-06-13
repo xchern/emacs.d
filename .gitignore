@@ -3,7 +3,7 @@ eshell/
 elpa/
 server/
 url/
-.org-id-locations
+session.*
 smex-items
 *~
 customize.el
