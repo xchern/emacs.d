@@ -7,3 +7,4 @@ session.*
 smex-items
 *~
 customize.el
+.org-id-locations
