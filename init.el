@@ -10,17 +10,17 @@
 
 (require 'init-utils)
 
-(require 'init-font)
-
-
 (require 'init-elpa)
 
 (require 'init-smex)
 (require 'init-org)
-(require 'init-theme)
+
+(require 'init-yasnippet)
 (require 'init-markdown)
 (require 'init-auctex)
-(require 'init-yasnippet)
+
+(require 'init-theme)
+(require 'init-font)
 
 (if (file-exists-p custom-file)
 	(load custom-file)
