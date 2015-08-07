@@ -1,4 +1,6 @@
-(if (eq system-type 'windows-nt) (server-start))
+(if (or (eq system-type 'windows-nt)
+		(eq system-type 'cygwin))
+	(server-start))
 
 (add-to-list
     'load-path 
