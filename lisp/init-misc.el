@@ -39,4 +39,5 @@
 
 (global-set-key [f5] 'gdb)
 (global-set-key [f9] 'compile)
-(provide 'init-utils)
+
+(provide 'init-misc)

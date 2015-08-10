@@ -1,5 +1,4 @@
-(if (or (eq system-type 'windows-nt)
-		(eq system-type 'cygwin))
+(if (eq system-type 'windows-nt)
 	(server-start))
 
 (add-to-list
@@ -10,19 +9,23 @@
 
 (setq custom-file (expand-file-name "customize.el" user-emacs-directory))
 
-(require 'init-utils)
-
 (require 'init-elpa)
-
-(require 'init-smex)
-(require 'init-org)
-
-(require 'init-yasnippet)
-(require 'init-markdown)
-(require 'init-auctex)
 
 (require 'init-theme)
 (require 'init-font)
+
+(require 'init-window-number)
+(require 'init-helm)
+(require 'init-yasnippet)
+(require 'init-org)
+(require 'init-avy)
+
+(require 'init-geiser)
+(require 'init-paredit)
+(require 'init-markdown)
+(require 'init-auctex)
+
+(require 'init-misc)
 
 (if (file-exists-p custom-file)
 	(load custom-file)

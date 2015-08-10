@@ -1,6 +1,0 @@
-#contributor: Xiasong Chen
-#name: define
-#key: define
-#key: d
-# --
-(define $1 $0)
