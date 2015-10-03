@@ -12,12 +12,12 @@
 	  '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)"  "CANCELED(c@/@)")))
 
 (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (gnuplot . t)
-     (latex . t)
-     (python . t)
-     (sh . t)))
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (gnuplot . t)
+   (latex . t)
+   (python . t)
+   (sh . t)))
 
 (provide 'init-org)
 
@@ -29,15 +29,21 @@
 
 (require 'ox-latex)
 
+;; Compile with XeLaTeX
 (setq org-latex-pdf-process
 	  '("xelatex -interaction nonstopmode -output-directory %o %f"
 		"bibtex %b"
 		"xelatex -interaction nonstopmode -output-directory %o %f"
 		"xelatex -interaction nonstopmode -output-directory %o %f"))
 
+;; New org latex classes, inset
+;; #+LaTeX_CLASS: CLASS_NAME
+;; at the beginning to specify.
+
+;; Org latex class xecjk-report
 (add-to-list 'org-latex-classes
-		  '("xecjk-article"
-		    "\\documentclass{article}
+			 '("xecjk-report"
+			   "\\documentclass{report}
 [NO-DEFAULT-PACKAGES]
 [PACKAGES]
 \\usepackage[T1]{fontenc}
@@ -54,6 +60,38 @@
 \\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
 \\usepackage{xeCJK}
 \\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{STFangsong}
+\\usepackage{geometry}
+\\geometry{left=1.5in,right=1.25in,top=1in,bottom=1in}
+[EXTRA]"
+         ("\\chapter{%s}" . "\\chapter*{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}")
+         ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; Org latex class xecjk-article
+(add-to-list 'org-latex-classes
+			 '("xecjk-article"
+			   "\\documentclass{article}
+[NO-DEFAULT-PACKAGES]
+[PACKAGES]
+\\usepackage[T1]{fontenc}
+\\usepackage{fixltx2e}
+\\usepackage{graphicx}
+\\usepackage{grffile}
+\\usepackage{longtable}
+\\usepackage{wrapfig}
+\\usepackage{rotating}
+\\usepackage{amsmath}
+\\usepackage{textcomp}
+\\usepackage{amssymb}
+\\usepackage{capt-of}
+\\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
+\\usepackage{xeCJK}
+\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{STFangsong}
+\\usepackage{geometry}
+\\geometry{left=1.5in,right=2in,top=1in,bottom=1in}
 [EXTRA]"
          ("\\section{%s}" . "\\section*{%s}")
          ("\\subsection{%s}" . "\\subsection*{%s}")
