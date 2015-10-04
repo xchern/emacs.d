@@ -5,6 +5,7 @@
 (global-linum-mode);; line number before each line
 
 (setq default-tab-width 4);; set default indent width
+(setq-default indent-tabs-mode nil);; do not use tab to indent
 
 (setq enable-recursive-minibuffers t);; use minibuffer recursively
 
@@ -34,7 +35,7 @@
 (defun toggle-fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen
-					   (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'toggle-fullscreen)
 
 (global-set-key [f5] 'gdb)
