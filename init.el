@@ -21,7 +21,6 @@
 (require 'init-avy)
 
 (require 'init-geiser)
-(require 'init-paredit)
 (require 'init-markdown)
 (require 'init-auctex)
 
