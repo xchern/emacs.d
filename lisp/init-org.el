@@ -57,6 +57,7 @@
 \\usepackage{textcomp}
 \\usepackage{amssymb}
 \\usepackage{capt-of}
+\\usepackage{indentfirst}
 \\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
 \\usepackage{xeCJK}
 \\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{STFangsong}
@@ -87,6 +88,7 @@
 \\usepackage{textcomp}
 \\usepackage{amssymb}
 \\usepackage{capt-of}
+\\usepackage{indentfirst}
 \\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
 \\usepackage{xeCJK}
 \\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{STFangsong}
