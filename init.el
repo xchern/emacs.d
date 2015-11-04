@@ -23,6 +23,7 @@
 (require 'init-geiser)
 (require 'init-markdown)
 (require 'init-auctex)
+(require 'init-haskell)
 
 (require 'init-misc)
 
