@@ -29,12 +29,15 @@
 
 (require 'ox-latex)
 
+(setq org-latex-logfiles-extensions
+      '("aux" "blg" "idx" "log" "out" "toc" "nav" "snm" "vrb"))
+
 ;; Compile with XeLaTeX
 (setq org-latex-pdf-process
 	  '("xelatex -interaction nonstopmode -output-directory %o %f"
-		"bibtex %b"
-		"xelatex -interaction nonstopmode -output-directory %o %f"
-		"xelatex -interaction nonstopmode -output-directory %o %f"))
+        "bibtex %b"
+        "xelatex -interaction nonstopmode -output-directory %o %f"
+        "xelatex -interaction nonstopmode -output-directory %o %f"))
 
 ;; New org latex classes, inset
 ;; #+LaTeX_CLASS: CLASS_NAME
