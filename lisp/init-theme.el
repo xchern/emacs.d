@@ -1,6 +1,6 @@
 (require-package 'spacemacs-theme)
 
-(load-theme 'spacemacs-dark t)
+(load-theme 'spacemacs-light t)
 
 (setq spacemacs-dark-theme t)
 
