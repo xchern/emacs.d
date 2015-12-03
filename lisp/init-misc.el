@@ -32,6 +32,8 @@
 
 (setq frame-title-format "emacs@%b");; title format
 
+(require-package 'resize-window);; little extension to resize window M-x resize-window to take funtion
+
 (defun toggle-fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen
