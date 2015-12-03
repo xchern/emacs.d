@@ -8,8 +8,10 @@
 
 (require 'init-elpa)
 
-(require 'init-org)
 (require 'init-geiser)
+(require 'init-paredit)
+
+(require 'init-org)
 (require 'init-markdown)
 (require 'init-auctex)
 (require 'init-haskell)

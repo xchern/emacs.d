@@ -32,6 +32,9 @@
 
 (setq frame-title-format "emacs@%b");; title format
 
+;; (require-package 'smooth-scroll)
+;; (smooth-scroll-mode t)
+
 (require-package 'resize-window);; little extension to resize window M-x resize-window to take funtion
 
 (defun toggle-fullscreen ()
