@@ -8,6 +8,10 @@
 
 (require 'init-elpa)
 
+(if (file-exists-p custom-file)
+	(load custom-file)
+  (message "[customize]You have no 'customize.el' file in 'emacs.d' diretory."))
+
 (require 'init-geiser)
 (require 'init-paredit)
 
@@ -17,11 +21,6 @@
 (require 'init-haskell)
 
 (require 'init-misc)
-
-(if (file-exists-p custom-file)
-	(load custom-file)
-  (message "[customize]You have no 'customize.el' file in 'emacs.d' diretory."))
-
 (require 'init-helm)
 (require 'init-yasnippet)
 (require 'init-avy)
