@@ -23,7 +23,7 @@
 
 ;; following settings based on https://github.com/wuyao721/51docs/blob/master/it/emacs-org-mode-pdf.org
 ;; before using please:
-;;   1.install font STFangsong, SimHei, KaiTi
+;;   1.install font SimSun, SimHei, KaiTi
 ;;   2.install texlive packages
 ;;   3.inset option: #+LaTeX_CLASS: xecjk-article at beginning
 
@@ -62,8 +62,10 @@
 \\usepackage{capt-of}
 \\usepackage{indentfirst}
 \\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
+\\usepackage{fontspec}
+\\setmainfont{Liberation Serif}
 \\usepackage{xeCJK}
-\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{STFangsong}
+\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{SimSun}
 \\usepackage{geometry}
 \\geometry{left=1.5in,right=1.25in,top=1in,bottom=1in}
 [EXTRA]"
@@ -93,8 +95,10 @@
 \\usepackage{capt-of}
 \\usepackage{indentfirst}
 \\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
+\\usepackage{fontspec}
+\\setmainfont{Liberation Serif}
 \\usepackage{xeCJK}
-\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{STFangsong}
+\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{SimSun}
 \\usepackage{geometry}
 \\geometry{left=1.5in,right=2in,top=1in,bottom=1in}
 [EXTRA]"
