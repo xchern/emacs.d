@@ -25,7 +25,7 @@
 (require 'init-yasnippet)
 (require 'init-avy)
 (require 'init-window-number)
-(provide 'init-resize-window)
+(require 'init-resize-window)
 (require 'init-theme)
 (require 'init-font)
 
