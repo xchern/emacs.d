@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 LC_CTYPE=zh_CN.utf8 emacs --daemon
 
 # to launch new emacs frame for window system
