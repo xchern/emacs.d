@@ -32,11 +32,7 @@
 
 (setq frame-title-format "emacs@%b");; title format
 
-(defun toggle-fullscreen ()
-  (interactive)
-  (set-frame-parameter nil 'fullscreen
-                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
-(global-set-key [f11] 'toggle-fullscreen)
+(global-set-key [f11] 'toggle-frame-fullscreen)
 
 (global-set-key [f5] 'gdb)
 (global-set-key [f9] 'compile)
