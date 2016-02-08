@@ -24,7 +24,7 @@
 (require 'init-helm)
 (require 'init-yasnippet)
 (require 'init-avy)
-(require 'init-window-number)
+(require 'init-ace-window)
 (require 'init-resize-window)
 (require 'init-theme)
 (require 'init-font)
