@@ -2,7 +2,7 @@
 
 (load-theme 'spacemacs-light t)
 
-(setq spacemacs-dark-theme t)
+(setq spacemacs-dark-theme nil)
 
 (defun theme-dark/light-switch ()
   (interactive)
