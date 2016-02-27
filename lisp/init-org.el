@@ -32,6 +32,12 @@
 (setq org-latex-logfiles-extensions
       '("aux" "blg" "idx" "log" "out" "toc" "nav" "snm" "vrb"))
 
+;; (setq org-texinfo-remove-logfiles nil)
+
+(setq org-latex-default-class "xecjk-article")
+
+(add-to-list 'org-file-apps '("pdf" . "evince %s"))
+
 ;; Compile with XeLaTeX
 (setq org-latex-pdf-process
 	  '("xelatex -interaction nonstopmode -output-directory %o %f"
