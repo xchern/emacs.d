@@ -25,7 +25,6 @@
 ;; before using please:
 ;;   1.install font SimSun, SimHei, KaiTi
 ;;   2.install texlive packages
-;;   3.inset option: #+LaTeX_CLASS: xecjk-article at beginning
 
 (require 'ox-latex)
 
@@ -34,7 +33,7 @@
 
 ;; (setq org-texinfo-remove-logfiles nil)
 
-(setq org-latex-default-class "xecjk-article")
+(setq org-latex-default-class "zh-article")
 
 (add-to-list 'org-file-apps '("pdf" . "evince %s"))
 
@@ -45,33 +44,24 @@
         "xelatex -interaction nonstopmode -output-directory %o %f"
         "xelatex -interaction nonstopmode -output-directory %o %f"))
 
+(setq org-latex-packages-alist
+      '(("colorlinks=true, linkcolor = blue, citecolor = green" "hyperref" nil)
+        ("" "xeCJK" t) ;; support chinese characters
+        "\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{SimSun}"))
+
 ;; New org latex classes, inset
 ;; #+LaTeX_CLASS: CLASS_NAME
 ;; at the beginning to specify.
 
-;; Org latex class xecjk-report
+;; Org latex class zh-report
 (add-to-list 'org-latex-classes
-			 '("xecjk-report"
+			 '("zh-report"
 			   "\\documentclass{report}
-[NO-DEFAULT-PACKAGES]
+[DEFAULT-PACKAGES]
 [PACKAGES]
-\\usepackage[T1]{fontenc}
-\\usepackage{fixltx2e}
-\\usepackage{graphicx}
-\\usepackage{grffile}
-\\usepackage{longtable}
-\\usepackage{wrapfig}
-\\usepackage{rotating}
-\\usepackage{amsmath}
-\\usepackage{textcomp}
-\\usepackage{amssymb}
-\\usepackage{capt-of}
 \\usepackage{indentfirst}
-\\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
 \\usepackage{fontspec}
 \\setmainfont{Liberation Serif}
-\\usepackage{xeCJK}
-\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{SimSun}
 \\usepackage{geometry}
 \\geometry{left=1.5in,right=1.25in,top=1in,bottom=1in}
 [EXTRA]"
@@ -82,29 +72,15 @@
          ("\\paragraph{%s}" . "\\paragraph*{%s}")
          ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; Org latex class xecjk-article
+;; Org latex class zh-article
 (add-to-list 'org-latex-classes
-			 '("xecjk-article"
+			 '("zh-article"
 			   "\\documentclass{article}
-[NO-DEFAULT-PACKAGES]
+[DEFAULT-PACKAGES]
 [PACKAGES]
-\\usepackage[T1]{fontenc}
-\\usepackage{fixltx2e}
-\\usepackage{graphicx}
-\\usepackage{grffile}
-\\usepackage{longtable}
-\\usepackage{wrapfig}
-\\usepackage{rotating}
-\\usepackage{amsmath}
-\\usepackage{textcomp}
-\\usepackage{amssymb}
-\\usepackage{capt-of}
 \\usepackage{indentfirst}
-\\usepackage[colorlinks=true, linkcolor = blue, citecolor = green]{hyperref}
 \\usepackage{fontspec}
 \\setmainfont{Liberation Serif}
-\\usepackage{xeCJK}
-\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{SimSun}
 \\usepackage{geometry}
 \\geometry{left=1.5in,right=2in,top=1in,bottom=1in}
 [EXTRA]"
