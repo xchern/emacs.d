@@ -27,7 +27,7 @@
 (set-locale-environment "UTF-8")
 (setq buffer-file-coding-system 'utf-8-unix)
 
-(setq initial-scratch-message ";; Happy emacsing!
+(setq initial-scratch-message ";; Happy hacking emacs!
 ")
 
 (setq frame-title-format "emacs@%b");; title format
