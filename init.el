@@ -21,6 +21,7 @@
 (require 'init-haskell)
 
 (require 'init-misc)
+(require 'init-smart-compile)
 (require 'init-helm)
 (require 'init-yasnippet)
 (require 'init-avy)
