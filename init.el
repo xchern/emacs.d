@@ -22,6 +22,7 @@
 
 (require 'init-misc)
 (require 'init-smart-compile)
+(require 'init-multi-cursors)
 (require 'init-helm)
 (require 'init-yasnippet)
 (require 'init-avy)
