@@ -3,6 +3,7 @@
 (scroll-bar-mode -1)
 (setq column-number-mode t) ; show column number
 (global-linum-mode);; line number before each line
+(setq linum-format "%3d\u2502");; line number format
 
 (setq default-tab-width 4);; set default indent width
 (setq-default indent-tabs-mode nil);; do not use tab to indent
