@@ -20,6 +20,7 @@
 (require 'init-auctex)
 (require 'init-haskell)
 
+(require 'init-sr-speedbar)
 (require 'init-misc)
 (require 'init-smart-compile)
 (require 'init-multi-cursors)
