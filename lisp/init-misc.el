@@ -35,6 +35,6 @@
 
 (global-set-key [f11] 'toggle-frame-fullscreen)
 
-(global-set-key [f5] 'gdb)
+(global-set-key (kbd "s-<f5>") 'gdb)
 
 (provide 'init-misc)
