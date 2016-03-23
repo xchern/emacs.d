@@ -29,7 +29,7 @@
 (require 'init-avy)
 (require 'init-ace-window)
 (require 'init-resize-window)
-(require 'init-viper)
+;; (require 'init-viper)
 (require 'init-theme)
 (require 'init-font)
 
