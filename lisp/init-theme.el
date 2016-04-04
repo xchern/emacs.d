@@ -1,8 +1,8 @@
 (require-package 'spacemacs-theme)
 
-(load-theme 'spacemacs-light t)
+(load-theme 'spacemacs-dark t)
 
-(setq spacemacs-dark-theme nil)
+(setq spacemacs-dark-theme t)
 
 (defun switch-spacemacs-theme ()
   (interactive)
