@@ -44,9 +44,13 @@
         "xelatex -interaction nonstopmode -output-directory %o %f"
         "xelatex -interaction nonstopmode -output-directory %o %f"))
 
+;; set hyperref package color style
+(delete '("" "hyperref" nil) org-latex-default-packages-alist)
+(add-to-list 'org-latex-default-packages-alist
+       '("colorlinks=true, linkcolor = blue, citecolor = green" "hyperref" nil))
+
 (setq org-latex-packages-alist
-      '(("colorlinks=true, linkcolor = blue, citecolor = green" "hyperref" nil)
-        ("" "xeCJK" t) ;; support chinese characters
+      '(("" "xeCJK" t) ;; support chinese characters
         "\\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{SimSun}"))
 
 ;; New org latex classes, inset
