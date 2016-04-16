@@ -41,22 +41,6 @@ locate PACKAGE."
      nil)))
 
 ;;--------------------------------------------------------------------------------------------------
-;; geiser
-(require-package 'geiser)
-
-;;--------------------------------------------------------------------------------------------------
-;; paredit
-(require-package 'paredit)
-
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-
-;;--------------------------------------------------------------------------------------------------
 ;; org-mode
 (require-package 'org)
 
@@ -153,26 +137,6 @@ locate PACKAGE."
          ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 ;;--------------------------------------------------------------------------------------------------
-;; markdown mode
-(require-package 'markdown-mode)
-
-;;--------------------------------------------------------------------------------------------------
-;; auctex
-(require-package 'auctex)
-
-;;--------------------------------------------------------------------------------------------------
-;; haskell mode
-(require-package 'haskell-mode)
-
-;;--------------------------------------------------------------------------------------------------
-;; sr-speedbar
-(require-package 'sr-speedbar)
-
-(global-set-key [f5] 'sr-speedbar-toggle)
-(setq sr-speedbar-right-side nil)
-(setq sr-speedbar-skip-other-window-p t)
-
-;;--------------------------------------------------------------------------------------------------
 ;; MISC
 (setq inhibit-startup-message t) ; close init screen
 
@@ -214,9 +178,12 @@ locate PACKAGE."
 (global-set-key (kbd "s-<f5>") 'gdb)
 
 ;;--------------------------------------------------------------------------------------------------
-;; smart-compile
-(require-package 'smart-compile)
-(global-set-key [f9] 'smart-compile)
+;; helm
+(require-package 'helm)
+
+(helm-mode 1)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "\C-x\C-f") 'helm-find-files)
 
 ;;--------------------------------------------------------------------------------------------------
 ;; multi-cursors
@@ -231,12 +198,35 @@ locate PACKAGE."
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
 ;;--------------------------------------------------------------------------------------------------
-;; helm
-(require-package 'helm)
+;; paredit
+(require-package 'paredit)
 
-(helm-mode 1)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "\C-x\C-f") 'helm-find-files)
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+
+;;--------------------------------------------------------------------------------------------------
+;; guide-key
+(require-package 'guide-key)
+(setq guide-key/guide-key-sequence t)
+(guide-key-mode 1)  ; Enable guide-key-mode
+
+;;--------------------------------------------------------------------------------------------------
+;; sr-speedbar
+(require-package 'sr-speedbar)
+
+(global-set-key [f5] 'sr-speedbar-toggle)
+(setq sr-speedbar-right-side nil)
+(setq sr-speedbar-skip-other-window-p t)
+
+;;--------------------------------------------------------------------------------------------------
+;; smart-compile
+(require-package 'smart-compile)
+(global-set-key [f9] 'smart-compile)
 
 ;;--------------------------------------------------------------------------------------------------
 ;;(require 'init-yasnippet)
@@ -268,6 +258,22 @@ locate PACKAGE."
 ;;--------------------------------------------------------------------------------------------------
 ;;(require 'init-resize-window)
 (require-package 'resize-window);; an extension to resize window M-x resize-window to take funtion
+
+;;--------------------------------------------------------------------------------------------------
+;; geiser
+(require-package 'geiser)
+
+;;--------------------------------------------------------------------------------------------------
+;; markdown mode
+(require-package 'markdown-mode)
+
+;;--------------------------------------------------------------------------------------------------
+;; auctex
+(require-package 'auctex)
+
+;;--------------------------------------------------------------------------------------------------
+;; haskell mode
+(require-package 'haskell-mode)
 
 ;;--------------------------------------------------------------------------------------------------
 ;; viper mode
