@@ -210,10 +210,9 @@ locate PACKAGE."
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 ;;--------------------------------------------------------------------------------------------------
-;; guide-key
-(require-package 'guide-key)
-(setq guide-key/guide-key-sequence t)
-(guide-key-mode 1)  ; Enable guide-key-mode
+;; which-key
+(require-package 'which-key)
+(which-key-mode 1)
 
 ;;--------------------------------------------------------------------------------------------------
 ;; sr-speedbar
