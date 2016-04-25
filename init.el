@@ -284,18 +284,20 @@ locate PACKAGE."
 
 ;;--------------------------------------------------------------------------------------------------
 ;; set theme
-(require-package 'spacemacs-theme)
-(load-theme 'spacemacs-dark t)
-(setq spacemacs-dark-theme t)
-(defun switch-spacemacs-theme ()
+(require-package 'sublime-themes)
+
+(setq theme-now-dark t)
+(load-theme 'spolsky t)
+
+(defun switch-theme-dark/light ()
   (interactive)
   "Used for switch theme between dark and light"
-  (setq spacemacs-dark-theme (not spacemacs-dark-theme))
-  (if spacemacs-dark-theme
-	  (load-theme 'spacemacs-dark t)
-	(load-theme 'spacemacs-light t))
+  (setq theme-now-dark (not theme-now-dark))
+  (if theme-now-dark
+	  (load-theme 'spolsky t)
+    (load-theme 'mccarthy t))
   (powerline-reset))
-(global-set-key [f7] 'switch-spacemacs-theme)
+(global-set-key [f7] 'switch-theme-dark/light)
 
 (require-package 'powerline)
 (powerline-default-theme)
