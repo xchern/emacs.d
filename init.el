@@ -22,6 +22,9 @@
 ;; edit
 (require 'init-edit)
 
+;; language support
+(require 'init-lang)
+
 ;;(require 'init-org)
 
 ;; load config file

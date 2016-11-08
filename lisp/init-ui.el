@@ -21,6 +21,7 @@
 
 (show-paren-mode t);; auto match parentheses
 (setq show-paren-style 'parentheses)
+(add-hook 'prog-mode-hook       #'highlight-parentheses-mode)
 
 ;; highlight-parentheses highlight parentheses surrunding the cursor
 (require-package 'highlight-parentheses)
@@ -36,8 +37,10 @@
 
 ;; sr-speedbar
 (require-package 'sr-speedbar)
-(setq sr-speedbar-right-side nil)
-(setq sr-speedbar-skip-other-window-p t)
+(setq sr-speedbar-right-side nil
+      sr-speedbar-skip-other-window-p t
+      speedbar-show-unknown-files t
+      speedbar-use-images nil)
 
 ;; powerline
 (require-package 'powerline)
