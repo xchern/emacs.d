@@ -21,7 +21,11 @@
 
 (show-paren-mode t);; auto match parentheses
 (setq show-paren-style 'parentheses)
-(add-hook 'prog-mode-hook       #'highlight-parentheses-mode)
+(add-hook 'prog-mode-hook #'highlight-parentheses-mode)
+
+;; yafolding-mode
+(require-package 'yafolding)
+(add-hook 'prog-mode-hook #'yafolding-mode)
 
 ;; highlight-parentheses highlight parentheses surrunding the cursor
 (require-package 'highlight-parentheses)
