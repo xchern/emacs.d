@@ -91,6 +91,12 @@
 (add-to-list
     'custom-theme-load-path
     (expand-file-name "theme" user-emacs-directory))
+;; work around theme switching bug
+;; from redguardtoo's config
+(defadvice load-theme (before disable-themes-first activate)
+  ;; disable all themes
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
 ;; theme specification
 (defvar theme-dark 'spolsky)
 (defvar theme-light 'mccarthy)
