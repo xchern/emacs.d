@@ -59,6 +59,14 @@
 (require-package 'which-key)
 (which-key-mode 1)
 
+;; go to scratch buffer
+(defun goto-scratch-buffer ()
+    "Goto scratch buffer, if not exists, create one."
+    (interactive)
+    (switch-to-buffer (get-buffer-create "*scratch*")))
+
+(global-set-key (kbd "C-x s") 'goto-scratch-buffer)
+                
 ;; helm
 (require-package 'helm)
 (require 'helm)
@@ -79,22 +87,26 @@
 ;; M-x resize-window to take funtion
 (require-package 'resize-window)
 
-;; theme
+;; load theme path
 (add-to-list
-    'custom-theme-load-path 
+    'custom-theme-load-path
     (expand-file-name "theme" user-emacs-directory))
+;; theme specification
+(defvar theme-dark 'spolsky)
+(defvar theme-light 'mccarthy)
+;; light dart theme switching
 (setq theme-now-dark t)
-(load-theme 'spolsky t)
+(load-theme theme-dark t)
 (defun switch-theme-dark/light ()
+  "Switch theme between dark and light."
   (interactive)
-  "Used for switch theme between dark and light"
   (setq theme-now-dark (not theme-now-dark))
   (if theme-now-dark
-	  (load-theme 'spolsky t)
-    (load-theme 'mccarthy t))
+	  (load-theme theme-dark t)
+    (load-theme theme-light t))
   (powerline-reset))
 
-;; font selection
+;; font specification
 (require 'cl);;find-if in the package
 (defvar en-font-list;; English fonts list (name . ratio)
   '(("DejaVu Sans Mono" . 0.6015)
@@ -110,6 +122,7 @@
     ("宋体" . 1.0)
     ("SimSun" . 1.0)
     ))
+
 ;; the font at front are first tested
 (defun font-existsp (font-pair)
   (if (null (x-list-fonts (car font-pair)))
