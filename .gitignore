@@ -1,3 +1,5 @@
+*~
+.*
 auto-save-list/
 eshell/
 elpa/
@@ -5,10 +7,7 @@ server/
 url/
 session.*
 smex-items
-*~
 config.el
 customize.el
-.org-id-locations
-.mc-lists.el
-viper
 recentf
+tramp

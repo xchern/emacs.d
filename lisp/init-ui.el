@@ -10,6 +10,8 @@
 
 (tool-bar-mode -1);; do not show tool bar
 (scroll-bar-mode -1);; do not show scroll bar
+;; switch menubar
+(global-set-key [f1] 'menu-bar-mode)
 
 (global-linum-mode);; line number before each line
 (setq linum-format 'dynamic);; line number format
@@ -39,6 +41,12 @@
 
 (setq use-dialog-box nil);; do not use dialogs
 
+;; default search with regexp
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
+
 ;; sr-speedbar
 (require-package 'sr-speedbar)
 (setq sr-speedbar-right-side nil
@@ -59,6 +67,13 @@
 (require-package 'which-key)
 (which-key-mode 1)
 
+;; Nicer naming of buffers for files with identical names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator " • ")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
+
 ;; go to scratch buffer
 (defun goto-scratch-buffer ()
     "Goto scratch buffer, if not exists, create one."
@@ -66,22 +81,31 @@
     (switch-to-buffer (get-buffer-create "*scratch*")))
 
 (global-set-key (kbd "C-x s") 'goto-scratch-buffer)
-                
-;; helm
-(require-package 'helm)
-(require 'helm)
-(require 'helm-config)
-;(require 'helm-dash)
-(helm-mode 1)
-(helm-autoresize-mode 1)
-(setq helm-ff-auto-update-initial-value t)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-s") 'helm-occur)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
+;; find file utils
+(global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
+(global-set-key (kbd "C-x C-p") 'find-file-at-point)
+(global-set-key (kbd "C-c y") 'bury-buffer)
+(global-set-key (kbd "C-c r") 'revert-buffer)
+(global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; ido mode
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point t
+      ido-max-prospects 10)
+
+;; Smex
+(require-package 'smex)
+;; Can be omitted. This might cause a (minimal) delay Smex is auto-initialized on its first run.
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; an extension to resize window
 ;; M-x resize-window to take funtion
@@ -112,6 +136,11 @@
     (load-theme theme-light t))
   (powerline-reset))
 
+;; change font size
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
+(define-key global-map (kbd "C-=") (lambda () (interactive) (text-scale-increase 0)))
+
 ;; font specification
 (require 'cl);;find-if in the package
 (defvar en-font-list;; English fonts list (name . ratio)
@@ -134,32 +163,34 @@
   (if (null (x-list-fonts (car font-pair)))
 	  nil t))
 (defun init-set-font ()
-  ;; find avaliable font
-  (let ((default-en-font (find-if 'font-existsp en-font-list))
-        (default-zh-font (find-if 'font-existsp zh-font-list)))
-    (if (not (or (null default-en-font) (null default-zh-font)))
-        (progn
-          ;; Set regular font
-          (set-face-attribute 'default nil
-                              :family (car default-en-font)
-                              :height 110)
-          ;; Set font for han characters
-          (set-fontset-font t 'han
-                            (car default-zh-font)
-                            nil)
-          ;; Set han font rescale ratio
-          (setq face-font-rescale-alist
-                (list (cons (car default-zh-font)
-                            (* 2.05
-                               (/ (cdr default-en-font)
-                                  (cdr default-zh-font))))))
-          nil)
-      (message "No font suits"))))
+  (if (window-system)
+      ;; find avaliable font
+      (let ((default-en-font (find-if 'font-existsp en-font-list))
+            (default-zh-font (find-if 'font-existsp zh-font-list)))
+        (if (not (or (null default-en-font) (null default-zh-font)))
+            (progn
+              ;; Set regular font
+              (set-face-attribute 'default nil
+                                  :family (car default-en-font)
+                                  :height 110)
+              ;; Set font for han characters
+              (set-fontset-font t 'han
+                                (car default-zh-font)
+                                nil)
+              ;; Set han font rescale ratio
+              (setq face-font-rescale-alist
+                    (list (cons (car default-zh-font)
+                                (* 2.05
+                                   (/ (cdr default-en-font)
+                                      (cdr default-zh-font))))))
+              nil)
+          (message "No font suits")))))
+
 (if (and (fboundp 'daemonp) (daemonp))
     (add-hook 'after-make-frame-functions
-	      (lambda (frame)
-		(with-selected-frame frame
-   (init-set-font))))
+              (lambda (frame)
+                (with-selected-frame frame
+                  (init-set-font))))
   (init-set-font))
 
 (provide 'init-ui)
