@@ -1,5 +1,4 @@
 (require 'init-elpa)
-
 ;; basic settings
 
 (setq inhibit-startup-message t) ; close init screen
@@ -25,6 +24,10 @@
 (setq show-paren-style 'parentheses)
 (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
 
+;; highlight word under cursor
+(require-package 'idle-highlight-mode)
+(add-hook 'prog-mode-hook #'idle-highlight-mode)
+
 ;; yafolding-mode
 (require-package 'yafolding)
 (add-hook 'prog-mode-hook #'yafolding-mode)
@@ -46,6 +49,21 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+
+;; company-mode
+(require-package 'company)
+(global-company-mode)
+;; company theme
+(require 'color)
+(defun set-company-theme ()
+  (let ((bg (face-attribute 'default :background)))
+    (custom-set-faces
+     `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 8)))))
+     `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
+     `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
+     `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+     `(company-tooltip-common ((t (:inherit font-lock-constant-face)))))))
 
 ;; sr-speedbar
 (require-package 'sr-speedbar)
@@ -85,18 +103,22 @@
 ;; find file utils
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 (global-set-key (kbd "C-x C-p") 'find-file-at-point)
-(global-set-key (kbd "C-c y") 'bury-buffer)
-(global-set-key (kbd "C-c r") 'revert-buffer)
-(global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
+(global-set-key (kbd "C-x y") 'bury-buffer)
+(global-set-key (kbd "C-x t") 'revert-buffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
 
 ;; ido mode
-(ido-mode t)
+(ido-mode 1)
+(ido-everywhere 1)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-create-new-buffer 'always
       ido-use-filename-at-point t
       ido-max-prospects 10)
+;; wider ido with ido-ubiquitous
+(require-package 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
 
 ;; Smex
 (require-package 'smex)
@@ -121,12 +143,14 @@
   ;; disable all themes
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
+
 ;; theme specification
 (defvar theme-dark 'spolsky)
 (defvar theme-light 'mccarthy)
 ;; light dart theme switching
 (setq theme-now-dark t)
 (load-theme theme-dark t)
+
 (defun switch-theme-dark/light ()
   "Switch theme between dark and light."
   (interactive)
@@ -134,7 +158,8 @@
   (if theme-now-dark
 	  (load-theme theme-dark t)
     (load-theme theme-light t))
-  (powerline-reset))
+  (powerline-reset)
+  (set-company-theme))
 
 ;; change font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
