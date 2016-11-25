@@ -6,6 +6,7 @@ elpa/
 server/
 url/
 session.*
+ido.last
 smex-items
 config.el
 customize.el
