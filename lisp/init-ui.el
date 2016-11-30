@@ -76,10 +76,9 @@
 (require-package 'powerline)
 (powerline-default-theme)
 
-;; ace-window
-(require-package 'ace-window)
-(require 'ace-window)
-(global-set-key (kbd "C-x o") 'ace-window)
+;; cycle the windows
+(global-set-key (kbd "C-x o") 'other-window)
+(global-set-key (kbd "C-x O") (lambda () (interactive)(other-window -1)));; reverse direction
 
 ;; which-key
 (require-package 'which-key)
